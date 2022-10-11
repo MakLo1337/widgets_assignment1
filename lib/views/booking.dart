@@ -22,15 +22,18 @@ class _BookingState extends State<Booking> {
 
   @override
   void dispose() {
-    
     super.dispose();
+    ctrlCity.dispose();
+    ctrlEmail.dispose();
+    ctrlName.dispose();
+    ctrlPhone.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login Page"),
+        title: const Text("Booking Page"),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -123,7 +126,7 @@ class _BookingState extends State<Booking> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: Text("Book failed!"),
+                            title: Text("Book success!"),
                             actions: <Widget>[
                               Align(child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,12 +138,11 @@ class _BookingState extends State<Booking> {
                                 ]),
                               ),
                               TextButton(
-                                onPressed: (() {
-                                  Navigator.of(context).pop(context);
-                                }),
+                                onPressed: () {
+                                  Navigator.pushAndRemoveUntil<dynamic>(context, MaterialPageRoute(builder: ((context) => MissionOne())), (route) => false);
+                                },
                                 child: Text("OK")
                                 ),
-                                
                             ],
                           );
                         });
